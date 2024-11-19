@@ -28,15 +28,16 @@ func (p *Position) AddIdPosition(idPos int) {
 }
 
 func (e *Employee) IsCanAddPosition() bool {
+
 	return e.employeeRole == ManagerEmployeeRole
 }
 
-func NewPosition(name, barcode string, price float32, positionType PositionType, now time.Time) *Position {
+func NewPosition(name, barcode string, price float32, posType PositionType, now time.Time) *Position {
 	return &Position{
 		NamePosition:      name,
 		BarcodePosition:   barcode,
 		PricePosition:     price,
-		positionType:      positionType,
+		positionType:      posType,
 		CreatedAtPosition: now,
 		UpdatedAtPosition: now,
 	}

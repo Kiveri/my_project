@@ -23,33 +23,15 @@ type Order struct {
 	SentAt       *time.Time
 	DeliveryAt   *time.Time
 	OrderStatus  OrderStatus
-	DeliveryType DeliveryType
+	deliveryType DeliveryType
 }
 
-func NewOrderCourierDeliveryType(positions []Position, now time.Time) *Order {
+func NewOrder(positions []Position, now time.Time, delType DeliveryType) *Order {
 	return &Order{
 		Positions:    positions,
 		CreatedAt:    now,
 		OrderStatus:  CreatedOrderStatus,
-		DeliveryType: CourierDeliveryType,
-	}
-}
-
-func NewOrderSelfDeliveryDeliveryType(positions []Position, now time.Time) *Order {
-	return &Order{
-		Positions:    positions,
-		CreatedAt:    now,
-		OrderStatus:  CreatedOrderStatus,
-		DeliveryType: SelfDeliveryDeliveryType,
-	}
-}
-
-func NewOrderPointOfDeliveryDeliveryType(positions []Position, now time.Time) *Order {
-	return &Order{
-		Positions:    positions,
-		CreatedAt:    now,
-		OrderStatus:  CreatedOrderStatus,
-		DeliveryType: PointOfDeliveryDeliveryType,
+		deliveryType: delType,
 	}
 }
 

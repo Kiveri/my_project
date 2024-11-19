@@ -31,7 +31,7 @@ func main() {
 	position, err2 := positionUseCase.AddPosition(position_usecase.AddPositionReq{
 		NamePosition:    "Болгарка Sturm AG90125E",
 		BarcodePosition: "",
-		PricePosition:   4736,
+		PricePosition:   4376,
 		PositionType:    model.BasicProductPositionType,
 	})
 	if err2 != nil {
