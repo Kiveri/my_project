@@ -15,7 +15,7 @@ type Order struct {
 	ID          int
 	Positions   []Position
 	CreatedAt   time.Time
-	BuiltAt     *time.Time
+	BuildingAt  *time.Time
 	SentAt      *time.Time
 	DeliveryAt  *time.Time
 	OrderStatus OrderStatus
@@ -27,4 +27,9 @@ func NewOrder(positions []Position, now time.Time) *Order {
 		CreatedAt:   now,
 		OrderStatus: CreatedOrderStatus,
 	}
+}
+
+func (o *Order) Building(now time.Time) {
+	o.OrderStatus = BuildingOrderStatus
+	o.BuildingAt = &now
 }

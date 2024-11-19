@@ -16,10 +16,18 @@ type Employee struct {
 	Surname      string
 	Phone        string
 	Email        string
-	EmployeeRole EmployeeRole
+	employeeRole EmployeeRole
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    *time.Time
+}
+
+func (e *Employee) AddIdentifier(id int) {
+	e.ID = id
+}
+
+func (e *Employee) IsCanBuildOrder() bool {
+	return e.employeeRole == ManagerEmployeeRole
 }
 
 func NewEmployee(name, surname, phone, email string, role EmployeeRole, now time.Time) *Employee {
@@ -28,7 +36,7 @@ func NewEmployee(name, surname, phone, email string, role EmployeeRole, now time
 		Surname:      surname,
 		Phone:        phone,
 		Email:        email,
-		EmployeeRole: role,
+		employeeRole: role,
 		CreatedAt:    now,
 		UpdatedAt:    now,
 	}
