@@ -2,21 +2,42 @@ package model
 
 import "time"
 
+type PositionType int
+
+const (
+	BasicProductPositionType    PositionType = 1
+	BasicConsumablePositionType PositionType = 2
+	LiquidPositionType          PositionType = 3
+	OversizePositionType        PositionType = 4
+)
+
 type Position struct {
-	ID        int
-	Name      string
-	Barcode   string
-	Price     float32
-	InStock   int
-	CreatedAt time.Time
+	IdPosition        int
+	NamePosition      string
+	BarcodePosition   string
+	PricePosition     float32
+	InStockPosition   int
+	CreatedAtPosition time.Time
+	UpdatedAtPosition time.Time
+	DeletedAtPosition *time.Time
+	positionType      PositionType
 }
 
-func NewPosition(name, barcode string, price float32, inStock int) *Position {
+func (p *Position) AddIdPosition(idPos int) {
+	p.IdPosition = idPos
+}
+
+func (e *Employee) IsCanAddPosition() bool {
+	return e.employeeRole == ManagerEmployeeRole
+}
+
+func NewPosition(name, barcode string, price float32, positionType PositionType, now time.Time) *Position {
 	return &Position{
-		Name:      name,
-		Barcode:   barcode,
-		Price:     price,
-		InStock:   inStock,
-		CreatedAt: time.Now(),
+		NamePosition:      name,
+		BarcodePosition:   barcode,
+		PricePosition:     price,
+		positionType:      positionType,
+		CreatedAtPosition: now,
+		UpdatedAtPosition: now,
 	}
 }

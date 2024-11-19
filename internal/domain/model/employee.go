@@ -11,19 +11,19 @@ const (
 )
 
 type Employee struct {
-	ID           int
-	Name         string
-	Surname      string
-	Phone        string
-	Email        string
-	employeeRole EmployeeRole
-	CreatedAt    time.Time
-	UpdatedAt    time.Time
-	DeletedAt    *time.Time
+	IdEmployee        int
+	NameEmployee      string
+	SurnameEmployee   string
+	PhoneEmployee     string
+	EmailEmployee     string
+	employeeRole      EmployeeRole
+	CreatedAtEmployee time.Time
+	UpdatedAtEmployee time.Time
+	DeletedAtEmployee *time.Time
 }
 
-func (e *Employee) AddIdentifier(id int) {
-	e.ID = id
+func (e *Employee) AddIdEmployee(idEmp int) {
+	e.IdEmployee = idEmp
 }
 
 func (e *Employee) IsCanBuildOrder() bool {
@@ -32,12 +32,12 @@ func (e *Employee) IsCanBuildOrder() bool {
 
 func NewEmployee(name, surname, phone, email string, role EmployeeRole, now time.Time) *Employee {
 	return &Employee{
-		Name:         name,
-		Surname:      surname,
-		Phone:        phone,
-		Email:        email,
-		employeeRole: role,
-		CreatedAt:    now,
-		UpdatedAt:    now,
+		NameEmployee:      name,
+		SurnameEmployee:   surname,
+		PhoneEmployee:     phone,
+		EmailEmployee:     email,
+		employeeRole:      role,
+		CreatedAtEmployee: now,
+		UpdatedAtEmployee: now,
 	}
 }
